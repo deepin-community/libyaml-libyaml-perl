@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+export USE_SYSTEM_LIBYAML = 1
+
+%:
+	dh $@

@@ -1,0 +1,27 @@
+Source: libyaml-libyaml-perl
+Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Uploaders: gregor herrmann <gregoa@debian.org>
+Section: perl
+Testsuite: autopkgtest-pkg-perl
+Priority: optional
+# libyaml-dev >= 0.2.4, once available
+Build-Depends: debhelper-compat (= 13),
+               libyaml-dev (>= 0.2.2),
+               perl-xs-dev,
+               perl:native
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/perl-team/modules/packages/libyaml-libyaml-perl
+Vcs-Git: https://salsa.debian.org/perl-team/modules/packages/libyaml-libyaml-perl.git
+Homepage: https://metacpan.org/release/YAML-LibYAML
+Rules-Requires-Root: no
+
+Package: libyaml-libyaml-perl
+Architecture: any
+Depends: ${misc:Depends},
+         ${perl:Depends},
+         ${shlibs:Depends}
+Description: Perl interface to libyaml, a YAML implementation
+ YAML::LibYAML (or YAML::XS) is a Perl interface to Kirill Siminov's libyaml
+ library, a YAML Ain't Markup Language (YAML) implementation written in C to
+ support the YAML 1.1 specification. The provided Dump and Load routines
+ are compatible with the Perl YAML module (see libyaml-perl).

@@ -1,0 +1,9 @@
+libyaml-libyaml-perl (0.81+repack-1) unstable; urgency=medium
+
+  YAML::XS 0.81 sets the default for $YAML::XS::LoadBlessed to false in order
+  to avoid loading untrusted objects, which can be a security vulnerability.
+
+  Cf. http://blogs.perl.org/users/tinita/2020/01/making-yamlpm-yamlsyck-and-yamlxs-safer-by-default.html
+  for background information and hints for handling this change.
+
+ -- gregor herrmann <gregoa@debian.org>  Wed, 29 Jan 2020 12:14:41 +0100

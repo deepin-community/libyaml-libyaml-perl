@@ -1,0 +1,25 @@
+Description: ability to use system-wide libyaml
+ Link with libyaml when USE_SYSTEM_LIBYAML is present in the environment.
+ .
+ This probably needs more work like moving bundled libyaml in a subdirectory
+ and recurse in it only if needed, but this patch is useful for Debian as it
+ is, because it allows us to strip the bindled libyaml from the sources and
+ link with the system-wide libyaml.
+Bug: https://github.com/ingydotnet/yaml-libyaml-pm/issues/49
+Bug-Debian: https://bugs.debian.org/664224
+Forwarded: https://github.com/ingydotnet/yaml-libyaml-pm/pull/78
+Author: Damyan Ivanov <dmn@debian.org>
+Reviewed-by: gregor herrmann <gregoa@debian.org>
+Last-Update: 2020-05-04
+
+--- a/LibYAML/Makefile.PL
++++ b/LibYAML/Makefile.PL
+@@ -25,7 +25,7 @@ WriteMakefile(
+     # CCFLAGS => '-pedantic -Wall',
+     # CCFLAGS => '-Wall',
+     DEFINE => $DEFINE,
+-    LIBS => [''], # e.g., '-lm'
++    LIBS => [$ENV{USE_SYSTEM_LIBYAML} ? '-lyaml' : ()], # e.g., '-lm'
+     INC => '-I.',
+     OBJECT => $obj_files,
+     ABSTRACT_FROM => 'lib/YAML/XS/LibYAML.pm',
